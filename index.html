@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kemel Belfquih | Technicien DevSecOps</title>
+    <meta name="description" content="Portfolio de Kemel Belfquih, Technicien DevSecOps Junior en recherche d'alternance.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            DEFAULT: '#10b981', // Emerald 500
+                            dark: '#064e3b',
+                            bg: '#0f172a', // Slate 900
+                            card: '#1e293b' // Slate 800
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Effet de clignotement pour le curseur */
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        /* Style de la scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981; 
+        }
+    </style>
+</head>
+<body class="bg-cyber-bg text-slate-300 font-sans antialiased selection:bg-cyber selection:text-white">
+
+    <nav class="fixed w-full z-50 bg-cyber-bg/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-mono text-cyber font-bold text-xl">
+                    &lt;KB/&gt;
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8 font-mono text-sm">
+                        <a href="#about" class="hover:text-cyber transition-colors">Profil</a>
+                        <a href="#skills" class="hover:text-cyber transition-colors">Stack</a>
+                        <a href="#projects" class="hover:text-cyber transition-colors">Projets</a>
+                        <a href="#experience" class="hover:text-cyber transition-colors">Expérience</a>
+                        <a href="#contact" class="px-4 py-2 border border-cyber text-cyber rounded hover:bg-cyber hover:text-white transition-all">Me Contacter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-20">
+            <div class="absolute top-10 left-10 w-72 h-72 bg-cyber rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+            <div class="absolute top-10 right-10 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="font-mono text-cyber mb-4">Bonjour, je suis</p>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                Kemel Belfquih
+            </h1>
+            <h2 class="text-2xl md:text-3xl text-slate-400 font-mono mb-8 h-8">
+                <span id="typewriter"></span><span class="cursor-blink">_</span>
+            </h2>
+            <p class="max-w-2xl mx-auto text-lg text-slate-400 mb-10 leading-relaxed">
+                Spécialisé en automatisation de la sécurité et développement d'outils cyber. 
+                Passionné par le scripting Python et l'infrastructure sécurisée.
+            </p>
+            
+            <div class="inline-block bg-cyber/10 border border-cyber/30 rounded-lg px-6 py-3 mb-10">
+                <span class="text-cyber font-bold"><i class="fas fa-exclamation-circle mr-2"></i> Recherche Alternance DevSecOps</span>
+                <span class="block text-sm text-slate-400 mt-1">Septembre 2025 • Mobilité Toulouse</span>
+            </div>
+
+            <div class="flex justify-center gap-4">
+                <a href="#contact" class="bg-cyber text-slate-900 font-bold px-8 py-3 rounded hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                    Discutons
+                </a>
+                <a href="https://github.com/kemelbelfquih" target="_blank" class="border border-slate-600 px-8 py-3 rounded hover:border-white hover:text-white transition-all">
+                    <i class="fab fa-github mr-2"></i>GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-slate-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 flex items-center">
+                <span class="text-cyber mr-2">01.</span> Compétences Techniques
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-cyber-card p-6 rounded-xl border border-slate-700 hover:border-cyber/50 transition-all group">
+                    <div class="text-cyber text-3xl mb-4"><i class="fas fa-code"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-4">Développement</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full text-emerald-300">Python (Avancé)</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">PowerShell</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Bash</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Git/GitHub</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Web Stack</span>
+                    </div>
+                </div>
+
+                <div class="bg-cyber-card p-6 rounded-xl border border-slate-700 hover:border-cyber/50 transition-all group">
+                    <div class="text-cyber text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-4">Cybersécurité</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full text-emerald-300">Stormshield</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">ESET Protect</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Kali Linux</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Burp Suite</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">OWASP Top 10</span>
+                    </div>
+                </div>
+
+                <div class="bg-cyber-card p-6 rounded-xl border border-slate-700 hover:border-cyber/50 transition-all group">
+                    <div class="text-cyber text-3xl mb-4"><i class="fas fa-server"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-4">DevOps & Infra</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full text-emerald-300">Docker</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">GitHub Actions</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Ansible</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Proxmox</span>
+                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Azure AD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-slate-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 flex items-center">
+                <span class="text-cyber mr-2">02.</span> Projets Clés
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-cyber-bg rounded-lg overflow-hidden border border-slate-700 flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <i class="far fa-folder text-4xl text-cyber"></i>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-slate-400 hover:text-cyber"><i class="fab fa-github text-xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Pipeline CI/CD Sécurisé</h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Application Python avec tests automatisés. Intégration de scans de sécurité SAST/DAST (Bandit, OWASP ZAP) et hardening de container Docker.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto">
+                        <ul class="flex flex-wrap gap-3 font-mono text-xs text-cyber">
+                            <li>GitHub Actions</li>
+                            <li>Docker</li>
+                            <li>Bandit</li>
+                            <li>Safety</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-cyber-bg rounded-lg overflow-hidden border border-slate-700 flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <i class="far fa-folder text-4xl text-cyber"></i>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-slate-400 hover:text-cyber"><i class="fab fa-github text-xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">HomeLab Automatisé</h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Déploiement scripté sur Proxmox. Active Directory, pfSense, Wazuh. Scripts Python custom pour la config réseau (VLANs, Firewall).
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto">
+                        <ul class="flex flex-wrap gap-3 font-mono text-xs text-cyber">
+                            <li>Proxmox</li>
+                            <li>Python</li>
+                            <li>Wazuh</li>
+                            <li>Grafana</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-cyber-bg rounded-lg overflow-hidden border border-slate-700 flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
+                    <div class="p-6 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <i class="fas fa-terminal text-4xl text-cyber"></i>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-slate-400 hover:text-cyber"><i class="fab fa-github text-xl"></i></a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Outils Python SecOps</h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Suite d'outils développés : Network Scanner pour l'audit, Log Analyzer avec détection d'anomalies et Backup Automator chiffré.
+                        </p>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto">
+                        <ul class="flex flex-wrap gap-3 font-mono text-xs text-cyber">
+                            <li>Python</li>
+                            <li>Socket</li>
+                            <li>Cryptography</li>
+                            <li>Regex</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 bg-slate-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 flex items-center">
+                <span class="text-cyber mr-2">03.</span> Parcours
+            </h2>
+
+            <div class="relative border-l border-slate-700 ml-3 md:ml-6 space-y-12">
+                
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-1.5 top-2 h-3 w-3 rounded-full bg-cyber border border-slate-900 ring-4 ring-slate-900"></span>
+                    <h3 class="text-xl font-bold text-white">Technicien DevSecOps & Infra (Stage)</h3>
+                    <div class="text-cyber font-mono text-sm mb-2">Anthea Informatique | Jan 2025 – Fév 2025</div>
+                    <ul class="list-disc list-outside text-slate-400 ml-4 space-y-1 text-sm">
+                        <li>Automatisation du déploiement de 45+ postes Windows (PowerShell, GPO, Hardening).</li>
+                        <li>Déploiement centralisé d'ESET Protect sur 200+ endpoints.</li>
+                        <li>Scripting Python pour l'analyse de logs et configuration de pare-feux Stormshield.</li>
+                        <li>Administration Azure AD/Entra ID via PowerShell.</li>
+                    </ul>
+                </div>
+
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-1.5 top-2 h-3 w-3 rounded-full bg-slate-600 border border-slate-900 ring-4 ring-slate-900"></span>
+                    <h3 class="text-xl font-bold text-white">BTS CIEL – Cybersécurité</h3>
+                    <div class="text-cyber font-mono text-sm mb-2">Campus Saint Pierre, Tarbes | 2024 – 2026</div>
+                    <p class="text-slate-400 text-sm">Développement sécurisé (C++, Python), Architecture réseaux, Projet Infrastructure DMZ automatisée.</p>
+                </div>
+                
+                 <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-1.5 top-2 h-3 w-3 rounded-full bg-slate-600 border border-slate-900 ring-4 ring-slate-900"></span>
+                    <h3 class="text-xl font-bold text-white">Équipier Polyvalent</h3>
+                    <div class="text-cyber font-mono text-sm mb-2">McDonald's | 2021 – Présent</div>
+                    <p class="text-slate-400 text-sm">Gestion du stress, travail en équipe, formation des nouveaux arrivants.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-slate-800/30 border-y border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h3 class="text-xl font-mono text-cyber mb-8"> Certifications & CTF</h3>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="flex items-center px-4 py-2 bg-slate-800 border border-cyber/30 rounded text-slate-300">
+                    <i class="fas fa-certificate text-yellow-500 mr-2"></i> ANSSI SecNumAcadémie
+                </span>
+                <span class="flex items-center px-4 py-2 bg-slate-800 border border-cyber/30 rounded text-slate-300">
+                    <i class="fas fa-flag text-green-500 mr-2"></i> HackTheBox: Hacker Rank
+                </span>
+                <span class="flex items-center px-4 py-2 bg-slate-800 border border-cyber/30 rounded text-slate-300">
+                    <i class="fas fa-shield-alt text-blue-500 mr-2"></i> RGPD & Protection Données
+                </span>
+                <span class="flex items-center px-4 py-2 bg-slate-800 border border-slate-600 rounded text-slate-500">
+                    <i class="fas fa-spinner fa-spin mr-2"></i> Cisco CCNA (In Progress)
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-slate-900 py-20 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-cyber font-mono mb-4">Et maintenant ?</p>
+            <h2 class="text-4xl font-bold text-white mb-6">Travaillons ensemble</h2>
+            <p class="text-slate-400 mb-8 max-w-xl mx-auto">
+                Je suis activement à la recherche d'une alternance en DevSecOps pour septembre 2025.
+                Basé à Poueyferré, mobile sur Toulouse.
+            </p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
+                <a href="mailto:kemelbelfquih@gmail.com" class="flex items-center justify-center gap-3 px-6 py-4 bg-slate-800 hover:bg-slate-700 rounded text-white transition-all border border-slate-700">
+                    <i class="fas fa-envelope text-cyber"></i> kemelbelfquih@gmail.com
+                </a>
+                <a href="tel:0627440251" class="flex items-center justify-center gap-3 px-6 py-4 bg-slate-800 hover:bg-slate-700 rounded text-white transition-all border border-slate-700">
+                    <i class="fas fa-phone text-cyber"></i> 06.27.44.02.51
+                </a>
+            </div>
+
+            <div class="flex justify-center space-x-8 text-2xl text-slate-400">
+                <a href="https://linkedin.com/in/kemelbelfquih" class="hover:text-cyber hover:-translate-y-1 transition-all"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/kemelbelfquih" class="hover:text-cyber hover:-translate-y-1 transition-all"><i class="fab fa-github"></i></a>
+            </div>
+            
+            <p class="mt-12 text-slate-600 text-sm font-mono">
+                Conçu & Développé par Kemel Belfquih
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const texts = ["Technicien DevSecOps", "Passionné d'Automatisation", "Scripteur Python", "Adepte CTF"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+
+            document.getElementById("typewriter").textContent = letter;
+
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000); // Wait before erasing or next word
+            } else {
+                setTimeout(type, 100);
+            }
+        })();
+    </script>
+</body>
+</html>
