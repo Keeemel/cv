@@ -3,359 +3,1066 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kemel Belfquih | Technicien DevSecOps</title>
-    <link rel="icon" type="image/png" href="icone.png">
-    <meta name="description" content="Portfolio de Kemel Belfquih, Technicien DevSecOps Junior en recherche d'alternance.">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Kemel Belfquih — Étudiant Cybersécurité</title>
+    <meta name="description" content="Portfolio de Kemel Belfquih, étudiant en BTS CIEL Cybersécurité, en recherche d'alternance.">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cyber: {
-                            DEFAULT: '#10b981', // Emerald 500
-                            dark: '#064e3b',
-                            bg: '#0f172a', // Slate 900
-                            card: '#1e293b' // Slate 800
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Effet de clignotement pour le curseur */
-        .cursor-blink {
-            animation: blink 1s step-end infinite;
+        :root {
+            --bg:        #080c10;
+            --bg2:       #0d1117;
+            --surface:   #111720;
+            --border:    rgba(255,255,255,0.06);
+            --accent:    #00e5a0;
+            --accent2:   #0af;
+            --text:      #c9d1e0;
+            --muted:     #5a6478;
+            --white:     #f0f4ff;
         }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { font-size: 16px; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
-        /* Style de la scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #1e2d3d; border-radius: 99px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ─── SELECTION ─── */
+        ::selection { background: var(--accent); color: #000; }
+
+        /* ─── NOISE TEXTURE ─── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: .4;
         }
-        ::-webkit-scrollbar-track {
-            background: #0f172a; 
+
+        /* ─── GRID BG ─── */
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(0,229,160,.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,229,160,.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #334155; 
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 clamp(1.5rem, 5vw, 4rem);
+            height: 64px;
+            background: rgba(8,12,16,.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: 'Syne Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--accent);
+            letter-spacing: .05em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Syne Mono', monospace;
+            font-size: .78rem;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            transition: color .2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-cta {
+            padding: .45rem 1.2rem;
+            border: 1px solid var(--accent) !important;
+            color: var(--accent) !important;
             border-radius: 4px;
+            transition: background .2s, color .2s !important;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #10b981; 
+        .nav-cta:hover { background: var(--accent) !important; color: #000 !important; }
+
+        /* ─── HERO ─── */
+        #hero {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            padding: 0 clamp(1.5rem, 8vw, 8rem);
+            padding-top: 64px;
+            z-index: 1;
         }
+
+        .hero-inner { max-width: 900px; }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            font-family: 'Syne Mono', monospace;
+            font-size: .75rem;
+            color: var(--accent);
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 1.8rem;
+            padding: .4rem .9rem;
+            border: 1px solid rgba(0,229,160,.25);
+            border-radius: 99px;
+            background: rgba(0,229,160,.05);
+            animation: fadeUp .6s ease both;
+        }
+
+        .pulse-dot {
+            width: 7px; height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 1.6s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%       { opacity: .4; transform: scale(.7); }
+        }
+
+        h1.hero-name {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(3rem, 9vw, 7.5rem);
+            line-height: .95;
+            color: var(--white);
+            letter-spacing: -.03em;
+            animation: fadeUp .7s .1s ease both;
+        }
+
+        h1.hero-name span { color: var(--accent); }
+
+        .hero-role {
+            font-family: 'Syne Mono', monospace;
+            font-size: clamp(.9rem, 2vw, 1.15rem);
+            color: var(--muted);
+            margin-top: 1.6rem;
+            margin-bottom: 1.2rem;
+            animation: fadeUp .7s .2s ease both;
+        }
+
+        .typewriter-wrap {
+            display: inline-block;
+            color: var(--text);
+        }
+
+        .cursor { color: var(--accent); animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        .hero-desc {
+            max-width: 540px;
+            color: var(--muted);
+            font-size: .98rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            animation: fadeUp .7s .3s ease both;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            animation: fadeUp .7s .4s ease both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .85rem 2rem;
+            background: var(--accent);
+            color: #000;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: .88rem;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform .2s, box-shadow .2s;
+            box-shadow: 0 0 28px rgba(0,229,160,.25);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(0,229,160,.4); }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .85rem 1.8rem;
+            border: 1px solid rgba(255,255,255,.12);
+            color: var(--text);
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            font-size: .88rem;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: border-color .2s, color .2s, transform .2s;
+        }
+        .btn-ghost:hover { border-color: var(--white); color: var(--white); transform: translateY(-2px); }
+
+        .hero-glow {
+            position: absolute;
+            top: 20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,229,160,.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ─── SECTION ─── */
+        section { position: relative; z-index: 1; }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px clamp(1.5rem, 5vw, 4rem);
+        }
+
+        .section-label {
+            font-family: 'Syne Mono', monospace;
+            font-size: .72rem;
+            color: var(--accent);
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+        }
+        .section-label::after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 60px;
+            background: var(--accent);
+            opacity: .4;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--white);
+            line-height: 1.1;
+            letter-spacing: -.02em;
+            margin-bottom: 3.5rem;
+        }
+
+        /* ─── SKILLS ─── */
+        #skills { background: var(--bg2); }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            padding: 2rem 2rem 2.5rem;
+            transition: background .2s;
+        }
+        .skill-card:hover { background: #141d27; }
+
+        .skill-icon {
+            width: 44px; height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,229,160,.1);
+            border: 1px solid rgba(0,229,160,.2);
+            border-radius: 10px;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .skill-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+            letter-spacing: .01em;
+        }
+
+        .tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+        .tag {
+            font-family: 'Syne Mono', monospace;
+            font-size: .72rem;
+            padding: .3rem .75rem;
+            border-radius: 4px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.07);
+            color: var(--text);
+            letter-spacing: .03em;
+            transition: border-color .2s, color .2s;
+        }
+        .tag.highlight {
+            background: rgba(0,229,160,.08);
+            border-color: rgba(0,229,160,.3);
+            color: var(--accent);
+        }
+        .skill-card:hover .tag { border-color: rgba(255,255,255,.12); }
+
+        /* ─── PROJECTS ─── */
+        #projects { background: var(--bg); }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: border-color .25s, transform .25s;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity .25s;
+        }
+        .project-card:hover { border-color: rgba(0,229,160,.25); transform: translateY(-5px); }
+        .project-card:hover::before { opacity: 1; }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.4rem;
+        }
+
+        .project-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .project-links { display: flex; gap: .8rem; }
+        .project-links a {
+            color: var(--muted);
+            font-size: 1rem;
+            transition: color .2s;
+            text-decoration: none;
+        }
+        .project-links a:hover { color: var(--accent); }
+
+        .project-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--white);
+            margin-bottom: .7rem;
+        }
+
+        .project-card p {
+            font-size: .88rem;
+            color: var(--muted);
+            line-height: 1.7;
+            flex: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-top: auto;
+        }
+
+        .stack-tag {
+            font-family: 'Syne Mono', monospace;
+            font-size: .7rem;
+            color: var(--accent);
+            letter-spacing: .05em;
+            padding: .25rem .6rem;
+            background: rgba(0,229,160,.06);
+            border-radius: 3px;
+        }
+
+        /* ─── TIMELINE ─── */
+        #experience { background: var(--bg2); }
+
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--accent), transparent 90%);
+        }
+
+        .tl-item {
+            position: relative;
+            padding-bottom: 3.5rem;
+        }
+        .tl-item:last-child { padding-bottom: 0; }
+
+        .tl-dot {
+            position: absolute;
+            left: -2.35rem;
+            top: 6px;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(0,229,160,.15);
+        }
+        .tl-dot.dim {
+            background: var(--muted);
+            box-shadow: 0 0 0 4px rgba(90,100,120,.15);
+        }
+
+        .tl-date {
+            font-family: 'Syne Mono', monospace;
+            font-size: .72rem;
+            color: var(--accent);
+            letter-spacing: .1em;
+            margin-bottom: .35rem;
+        }
+
+        .tl-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: .15rem;
+        }
+
+        .tl-company {
+            font-size: .85rem;
+            color: var(--muted);
+            margin-bottom: .9rem;
+        }
+
+        .tl-item ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+        }
+
+        .tl-item li {
+            font-size: .88rem;
+            color: var(--text);
+            padding-left: 1.1rem;
+            position: relative;
+        }
+        .tl-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* ─── CERTIFS ─── */
+        #certifs { background: var(--bg); }
+
+        .certifs-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .certif-badge {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            padding: .85rem 1.4rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: .88rem;
+            color: var(--text);
+            transition: border-color .2s, color .2s;
+        }
+        .certif-badge:hover { border-color: var(--accent); color: var(--white); }
+        .certif-badge i { font-size: 1rem; }
+        .certif-badge.pending { opacity: .5; }
+
+        /* ─── CONTACT ─── */
+        #contact {
+            background: var(--bg2);
+            text-align: center;
+        }
+
+        .contact-inner { max-width: 600px; margin: 0 auto; padding: 100px 1.5rem; }
+
+        .contact-sub {
+            font-family: 'Syne Mono', monospace;
+            font-size: .75rem;
+            color: var(--accent);
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .contact-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--white);
+            line-height: 1.1;
+            letter-spacing: -.03em;
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-desc {
+            color: var(--muted);
+            margin-bottom: 2.5rem;
+            font-size: .95rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .85rem 1.6rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: .88rem;
+            transition: border-color .2s, color .2s, transform .2s;
+        }
+        .contact-link i { color: var(--accent); }
+        .contact-link:hover { border-color: var(--accent); color: var(--white); transform: translateY(-2px); }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-row a {
+            font-size: 1.25rem;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color .2s, transform .2s;
+        }
+        .social-row a:hover { color: var(--accent); transform: translateY(-3px); }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-family: 'Syne Mono', monospace;
+            font-size: .72rem;
+            color: var(--muted);
+            letter-spacing: .08em;
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        /* ─── ABOUT ─── */
+        #about { background: var(--bg); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .nav-links { display: none; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+
+        .about-text p {
+            color: var(--muted);
+            font-size: .95rem;
+            line-height: 1.85;
+            margin-bottom: 1.2rem;
+        }
+        .about-text p span { color: var(--accent); font-weight: 500; }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .stat-cell {
+            background: var(--surface);
+            padding: 1.5rem;
+        }
+
+        .stat-num {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 2.2rem;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: .3rem;
+        }
+        .stat-num span { color: var(--accent); }
+
+        .stat-label {
+            font-size: .8rem;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        /* ─── SCROLLBAR ─── */
+        .availability-bar {
+            display: inline-flex;
+            align-items: center;
+            gap: .6rem;
+            font-family: 'Syne Mono', monospace;
+            font-size: .72rem;
+            color: var(--accent);
+            margin-top: 2rem;
+        }
+        .avail-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 1.8s infinite; }
     </style>
 </head>
-<body class="bg-cyber-bg text-slate-300 font-sans antialiased selection:bg-cyber selection:text-white">
+<body>
 
-    <nav class="fixed w-full z-50 bg-cyber-bg/90 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 font-mono text-cyber font-bold text-xl">
-                    &lt;KB/&gt;
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav>
+    <a href="#" class="nav-logo">&lt;KB /&gt;</a>
+    <ul class="nav-links">
+        <li><a href="#about">Profil</a></li>
+        <li><a href="#skills">Stack</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#experience">Parcours</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+        <div class="hero-tag">
+            <span class="pulse-dot"></span>
+            Disponible — Alternance Cybersécurité Sep 2025 · Toulouse
+        </div>
+        <h1 class="hero-name">Kemel<br><span>Belfquih</span></h1>
+        <p class="hero-role">
+            <span class="typewriter-wrap"><span id="tw"></span><span class="cursor">_</span></span>
+        </p>
+        <p class="hero-desc">
+            Étudiant en BTS CIEL Cybersécurité, passionné par la sécurité des systèmes et des réseaux. J'ai eu une première expérience concrète en entreprise et je cherche une alternance pour approfondir mes compétences en cybersécurité opérationnelle.
+        </p>
+        <div class="hero-actions">
+            <a href="#contact" class="btn-primary"><i class="fas fa-paper-plane"></i> Me Contacter</a>
+            <a href="https://github.com/Keeemel" target="_blank" class="btn-ghost"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="section-inner">
+        <p class="section-label reveal">00. À propos</p>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <h2 class="section-title" style="margin-bottom:1.5rem">Un peu<br>sur moi.</h2>
+                <p>
+                    Je suis <span>Kemel Belfquih</span>, étudiant en BTS CIEL Cybersécurité basé près de Toulouse. Je m'intéresse à la sécurité des systèmes, des réseaux, et à l'administration d'infrastructures.
+                </p>
+                <p>
+                    Mon stage chez <span>Anthea Informatique</span> m'a donné une expérience concrète en environnement professionnel : déploiement Windows, Azure AD, Stormshield, et gestion d'endpoints à grande échelle.
+                </p>
+                <p>
+                    En dehors de l'école, je pratique le <span>volleyball</span> et le cinéma, et j'explore activement les domaines de la sécurité offensive et défensive.
+                </p>
+                <div class="availability-bar">
+                    <span class="avail-dot"></span>
+                    Ouvert aux opportunités d'alternance Cybersécurité
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8 font-mono text-sm">
-                        <a href="#about" class="hover:text-cyber transition-colors">Profil</a>
-                        <a href="#skills" class="hover:text-cyber transition-colors">Stack</a>
-                        <a href="#projects" class="hover:text-cyber transition-colors">Projets</a>
-                        <a href="#experience" class="hover:text-cyber transition-colors">Expérience</a>
-                        <a href="#contact" class="px-4 py-2 border border-cyber text-cyber rounded hover:bg-cyber hover:text-white transition-all">Me Contacter</a>
-                    </div>
+            </div>
+            <div class="about-stats reveal">
+                <div class="stat-cell">
+                    <div class="stat-num">45<span>+</span></div>
+                    <div class="stat-label">Postes Windows déployés automatiquement</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="stat-num">200<span>+</span></div>
+                    <div class="stat-label">Endpoints sécurisés avec ESET Protect</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="stat-num">3<span>+</span></div>
+                    <div class="stat-label">Outils Python SecOps développés</div>
+                </div>
+                <div class="stat-cell">
+                    <div class="stat-num">B2</div>
+                    <div class="stat-label">Niveau Anglais + Espagnol & Arabe</div>
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <section class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-20">
-            <div class="absolute top-10 left-10 w-72 h-72 bg-cyber rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-            <div class="absolute top-10 right-10 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-        </div>
-
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <p class="font-mono text-cyber mb-4">Bonjour, je suis</p>
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-                Kemel Belfquih
-            </h1>
-            <h2 class="text-2xl md:text-3xl text-slate-400 font-mono mb-8 h-8">
-                <span id="typewriter"></span><span class="cursor-blink">_</span>
-            </h2>
-            <p class="max-w-2xl mx-auto text-lg text-slate-400 mb-10 leading-relaxed">
-                Spécialisé en automatisation de la sécurité et développement d'outils cyber. 
-                Passionné par le scripting Python et l'infrastructure sécurisée.
-            </p>
-            
-            <div class="inline-block bg-cyber/10 border border-cyber/30 rounded-lg px-6 py-3 mb-10">
-                <span class="text-cyber font-bold"><i class="fas fa-exclamation-circle mr-2"></i> Recherche Alternance DevSecOps</span>
-                <span class="block text-sm text-slate-400 mt-1">Septembre 2025 • Mobilité Toulouse</span>
-            </div>
-
-            <div class="flex justify-center gap-4">
-                <a href="#contact" class="bg-cyber text-slate-900 font-bold px-8 py-3 rounded hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                    Discutons
-                </a>
-                <a href="https://github.com/kemelbelfquih" target="_blank" class="border border-slate-600 px-8 py-3 rounded hover:border-white hover:text-white transition-all">
-                    <i class="fab fa-github mr-2"></i>GitHub
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="py-20 bg-slate-900">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white mb-12 flex items-center">
-                <span class="text-cyber mr-2">01.</span> Compétences Techniques
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-cyber-card p-6 rounded-xl border border-slate-700 hover:border-cyber/50 transition-all group">
-                    <div class="text-cyber text-3xl mb-4"><i class="fas fa-code"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-4">Développement</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full text-emerald-300">Python (Avancé)</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">PowerShell</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Bash</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Git/GitHub</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Web Stack</span>
-                    </div>
+<!-- SKILLS -->
+<section id="skills">
+    <div class="section-inner">
+        <p class="section-label reveal">01. Compétences</p>
+        <h2 class="section-title reveal">Ma Stack<br>Technique</h2>
+        <div class="skills-grid reveal">
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                <h3>Développement & Scripting</h3>
+                <div class="tags">
+                    <span class="tag highlight">Python (Avancé)</span>
+                    <span class="tag">PowerShell</span>
+                    <span class="tag">Bash</span>
+                    <span class="tag">Java / C++</span>
+                    <span class="tag">Git / GitHub</span>
+                    <span class="tag">HTML · CSS · JS</span>
+                    <span class="tag">PHP / SQL</span>
                 </div>
-
-                <div class="bg-cyber-card p-6 rounded-xl border border-slate-700 hover:border-cyber/50 transition-all group">
-                    <div class="text-cyber text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-4">Cybersécurité</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full text-emerald-300">Stormshield</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">ESET Protect</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Kali Linux</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Burp Suite</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">OWASP Top 10</span>
-                    </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Cybersécurité</h3>
+                <div class="tags">
+                    <span class="tag highlight">Stormshield SNS</span>
+                    <span class="tag">ESET Protect</span>
+                    <span class="tag">Kali Linux</span>
+                    <span class="tag">Burp Suite</span>
+                    <span class="tag">Wireshark</span>
+                    <span class="tag">OWASP Top 10</span>
+                    <span class="tag">MITRE ATT&CK</span>
+                    <span class="tag">Metasploit</span>
                 </div>
-
-                <div class="bg-cyber-card p-6 rounded-xl border border-slate-700 hover:border-cyber/50 transition-all group">
-                    <div class="text-cyber text-3xl mb-4"><i class="fas fa-server"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-4">DevOps & Infra</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full text-emerald-300">Docker</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">GitHub Actions</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Ansible</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Proxmox</span>
-                        <span class="px-3 py-1 bg-slate-700 text-sm rounded-full">Azure AD</span>
-                    </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
+                <h3>DevOps & CI/CD</h3>
+                <div class="tags">
+                    <span class="tag highlight">Docker</span>
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">Ansible</span>
+                    <span class="tag">IaC</span>
+                    <span class="tag">Bandit / SAST</span>
+                    <span class="tag">OWASP ZAP</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-server"></i></div>
+                <h3>Systèmes & Infrastructure</h3>
+                <div class="tags">
+                    <span class="tag highlight">Azure AD / Entra ID</span>
+                    <span class="tag">Active Directory</span>
+                    <span class="tag">Proxmox / VMware</span>
+                    <span class="tag">Hyper-V</span>
+                    <span class="tag">TCP/IP · VLAN · VPN</span>
+                    <span class="tag">Grafana / PRTG</span>
+                    <span class="tag">Wazuh / Splunk</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="projects" class="py-20 bg-slate-800/50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white mb-12 flex items-center">
-                <span class="text-cyber mr-2">02.</span> Projets Clés
-            </h2>
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="section-inner">
+        <p class="section-label reveal">02. Projets</p>
+        <h2 class="section-title reveal">Ce que j'ai<br>construit</h2>
+        <div class="projects-grid">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div class="bg-cyber-bg rounded-lg overflow-hidden border border-slate-700 flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <i class="far fa-folder text-4xl text-cyber"></i>
-                            <div class="flex gap-4">
-                                <a href="#" class="text-slate-400 hover:text-cyber"><i class="fab fa-github text-xl"></i></a>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Pipeline CI/CD Sécurisé</h3>
-                        <p class="text-slate-400 text-sm mb-4">
-                            Application Python avec tests automatisés. Intégration de scans de sécurité SAST/DAST (Bandit, OWASP ZAP) et hardening de container Docker.
-                        </p>
-                    </div>
-                    <div class="p-6 pt-0 mt-auto">
-                        <ul class="flex flex-wrap gap-3 font-mono text-xs text-cyber">
-                            <li>GitHub Actions</li>
-                            <li>Docker</li>
-                            <li>Bandit</li>
-                            <li>Safety</li>
-                        </ul>
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-shield-halved"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/Keeemel" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
+                <h3>Pipeline CI/CD Sécurisé</h3>
+                <p>Application Python avec tests automatisés. Scans SAST/DAST intégrés (Bandit, OWASP ZAP), hardening de container Docker et rapport de sécurité automatique à chaque push.</p>
+                <div class="project-stack">
+                    <span class="stack-tag">GitHub Actions</span>
+                    <span class="stack-tag">Docker</span>
+                    <span class="stack-tag">Bandit</span>
+                    <span class="stack-tag">Safety</span>
+                    <span class="stack-tag">OWASP ZAP</span>
+                </div>
+            </div>
 
-                <div class="bg-cyber-bg rounded-lg overflow-hidden border border-slate-700 flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <i class="far fa-folder text-4xl text-cyber"></i>
-                            <div class="flex gap-4">
-                                <a href="#" class="text-slate-400 hover:text-cyber"><i class="fab fa-github text-xl"></i></a>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">HomeLab Automatisé</h3>
-                        <p class="text-slate-400 text-sm mb-4">
-                            Déploiement scripté sur Proxmox. Active Directory, pfSense, Wazuh. Scripts Python custom pour la config réseau (VLANs, Firewall).
-                        </p>
-                    </div>
-                    <div class="p-6 pt-0 mt-auto">
-                        <ul class="flex flex-wrap gap-3 font-mono text-xs text-cyber">
-                            <li>Proxmox</li>
-                            <li>Python</li>
-                            <li>Wazuh</li>
-                            <li>Grafana</li>
-                        </ul>
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-network-wired"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/Keeemel" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
+                <h3>HomeLab Automatisé</h3>
+                <p>Déploiement scripté sur Proxmox : Active Directory, pfSense, Wazuh SIEM. Scripts Python custom pour configuration réseau (VLANs, règles firewall) et monitoring Grafana.</p>
+                <div class="project-stack">
+                    <span class="stack-tag">Proxmox</span>
+                    <span class="stack-tag">Python</span>
+                    <span class="stack-tag">Wazuh</span>
+                    <span class="stack-tag">Grafana</span>
+                    <span class="stack-tag">pfSense</span>
+                </div>
+            </div>
 
-                <div class="bg-cyber-bg rounded-lg overflow-hidden border border-slate-700 flex flex-col h-full hover:-translate-y-2 transition-transform duration-300">
-                    <div class="p-6 flex-1">
-                        <div class="flex justify-between items-start mb-4">
-                            <i class="fas fa-terminal text-4xl text-cyber"></i>
-                            <div class="flex gap-4">
-                                <a href="#" class="text-slate-400 hover:text-cyber"><i class="fab fa-github text-xl"></i></a>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Outils Python SecOps</h3>
-                        <p class="text-slate-400 text-sm mb-4">
-                            Suite d'outils développés : Network Scanner pour l'audit, Log Analyzer avec détection d'anomalies et Backup Automator chiffré.
-                        </p>
-                    </div>
-                    <div class="p-6 pt-0 mt-auto">
-                        <ul class="flex flex-wrap gap-3 font-mono text-xs text-cyber">
-                            <li>Python</li>
-                            <li>Socket</li>
-                            <li>Cryptography</li>
-                            <li>Regex</li>
-                        </ul>
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-terminal"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/Keeemel" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
+                <h3>Suite Outils Python SecOps</h3>
+                <p>Trois outils développés from scratch : Network Scanner pour audit réseau, Log Analyzer avec détection d'anomalies ML-ready, Backup Automator chiffré AES.</p>
+                <div class="project-stack">
+                    <span class="stack-tag">Python</span>
+                    <span class="stack-tag">Socket</span>
+                    <span class="stack-tag">Cryptography</span>
+                    <span class="stack-tag">Regex</span>
+                </div>
+            </div>
 
+            <div class="project-card reveal">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-cubes"></i></div>
+                    <div class="project-links">
+                        <a href="https://github.com/Keeemel" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <h3>Infrastructure DMZ Sécurisée</h3>
+                <p>Projet BTS : déploiement automatisé d'une DMZ complète avec Stormshield, segmentation réseau, scripts Ansible/Python et centralisation des logs sur Splunk.</p>
+                <div class="project-stack">
+                    <span class="stack-tag">Ansible</span>
+                    <span class="stack-tag">Python</span>
+                    <span class="stack-tag">Stormshield</span>
+                    <span class="stack-tag">Splunk</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+    <div class="section-inner">
+        <p class="section-label reveal">03. Parcours</p>
+        <h2 class="section-title reveal">Expérience &<br>Formation</h2>
+        <div class="timeline reveal">
+
+            <div class="tl-item">
+                <span class="tl-dot"></span>
+                <div class="tl-date">Jan 2025 — Fév 2025</div>
+                <div class="tl-title">Technicien Sys & Réseaux — Stage</div>
+                <div class="tl-company">Anthea Informatique</div>
+                <ul>
+                    <li>Automatisation du déploiement de 45+ postes Windows (PowerShell, GPO, hardening)</li>
+                    <li>Déploiement centralisé ESET Protect sur 200+ endpoints avec configuration automatisée</li>
+                    <li>Développement de scripts Python pour analyse de logs et config pare-feux Stormshield</li>
+                    <li>Administration Azure AD/Entra ID via PowerShell (utilisateurs, MFA, politiques)</li>
+                    <li>Migration de serveurs vers Hyper-V avec déploiement automatisé</li>
+                </ul>
+            </div>
+
+            <div class="tl-item">
+                <span class="tl-dot dim"></span>
+                <div class="tl-date">2024 — 2026</div>
+                <div class="tl-title">BTS CIEL — Cybersécurité, Informatique & Réseaux</div>
+                <div class="tl-company">Campus Saint Pierre, Tarbes</div>
+                <ul>
+                    <li>Développement sécurisé (Python, C++, Java)</li>
+                    <li>Administration systèmes et automatisation</li>
+                    <li>Architecture réseaux et sécurisation d'infrastructures</li>
+                    <li>Projet : Infrastructure DMZ automatisée (Ansible/Python, Stormshield, Splunk)</li>
+                </ul>
+            </div>
+
+            <div class="tl-item">
+                <span class="tl-dot dim"></span>
+                <div class="tl-date">2023 — 2024</div>
+                <div class="tl-title">BUT Informatique — 1ère année validée</div>
+                <div class="tl-company">IUT de Montpellier</div>
+                <ul>
+                    <li>Algorithmique avancée, POO (Java, Python, C++)</li>
+                    <li>Développement web (HTML5, CSS3, JS, PHP, SQL)</li>
+                    <li>Administration BDD (MySQL, PostgreSQL), UML, Agile</li>
+                </ul>
+            </div>
+
+            <div class="tl-item">
+                <span class="tl-dot dim"></span>
+                <div class="tl-date">2021 — Présent</div>
+                <div class="tl-title">Équipier Polyvalent — Contrat étudiant</div>
+                <div class="tl-company">McDonald's, Lourdes</div>
+                <ul>
+                    <li>Gestion du stress et travail sous pression</li>
+                    <li>Formation des nouveaux collaborateurs</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFS -->
+<section id="certifs">
+    <div class="section-inner">
+        <p class="section-label reveal">04. Certifications & CTF</p>
+        <h2 class="section-title reveal" style="margin-bottom:2rem">Reconnaissances</h2>
+        <div class="certifs-flex reveal">
+            <div class="certif-badge">
+                <i class="fas fa-certificate" style="color:#f59e0b"></i> ANSSI SecNumAcadémie
+            </div>
+            <div class="certif-badge">
+                <i class="fas fa-flag" style="color:var(--accent)"></i> HackTheBox — Hacker Rank
+            </div>
+            <div class="certif-badge">
+                <i class="fas fa-shield-alt" style="color:var(--accent2)"></i> RGPD & Protection des Données
+            </div>
+            <div class="certif-badge">
+                <i class="fas fa-star" style="color:#f59e0b"></i> Pix (Certification numérique)
+            </div>
+            <div class="certif-badge pending">
+                <i class="fas fa-spinner fa-spin"></i> Cisco CCNA — En cours
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="experience" class="py-20 bg-slate-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white mb-12 flex items-center">
-                <span class="text-cyber mr-2">03.</span> Parcours
-            </h2>
-
-            <div class="relative border-l border-slate-700 ml-3 md:ml-6 space-y-12">
-                
-                <div class="relative pl-8 md:pl-12">
-                    <span class="absolute -left-1.5 top-2 h-3 w-3 rounded-full bg-cyber border border-slate-900 ring-4 ring-slate-900"></span>
-                    <h3 class="text-xl font-bold text-white">Technicien DevSecOps & Infra (Stage)</h3>
-                    <div class="text-cyber font-mono text-sm mb-2">Anthea Informatique | Jan 2025 – Fév 2025</div>
-                    <ul class="list-disc list-outside text-slate-400 ml-4 space-y-1 text-sm">
-                        <li>Automatisation du déploiement de 45+ postes Windows (PowerShell, GPO, Hardening).</li>
-                        <li>Déploiement centralisé d'ESET Protect sur 200+ endpoints.</li>
-                        <li>Scripting Python pour l'analyse de logs et configuration de pare-feux Stormshield.</li>
-                        <li>Administration Azure AD/Entra ID via PowerShell.</li>
-                    </ul>
-                </div>
-
-                <div class="relative pl-8 md:pl-12">
-                    <span class="absolute -left-1.5 top-2 h-3 w-3 rounded-full bg-slate-600 border border-slate-900 ring-4 ring-slate-900"></span>
-                    <h3 class="text-xl font-bold text-white">BTS CIEL – Cybersécurité</h3>
-                    <div class="text-cyber font-mono text-sm mb-2">Campus Saint Pierre, Tarbes | 2024 – 2026</div>
-                    <p class="text-slate-400 text-sm">Développement sécurisé (C++, Python), Architecture réseaux, Projet Infrastructure DMZ automatisée.</p>
-                </div>
-                
-                 <div class="relative pl-8 md:pl-12">
-                    <span class="absolute -left-1.5 top-2 h-3 w-3 rounded-full bg-slate-600 border border-slate-900 ring-4 ring-slate-900"></span>
-                    <h3 class="text-xl font-bold text-white">Équipier Polyvalent</h3>
-                    <div class="text-cyber font-mono text-sm mb-2">McDonald's | 2021 – Présent</div>
-                    <p class="text-slate-400 text-sm">Gestion du stress, travail en équipe, formation des nouveaux arrivants.</p>
-                </div>
-
-            </div>
+<!-- CONTACT -->
+<section id="contact">
+    <div class="contact-inner">
+        <p class="contact-sub reveal">05. Contact</p>
+        <h2 class="contact-title reveal">Travaillons<br>ensemble.</h2>
+        <p class="contact-desc reveal">
+            Je recherche une alternance DevSecOps à partir de septembre 2025. Mobile sur Toulouse. N'hésitez pas à me contacter.
+        </p>
+        <div class="contact-links reveal">
+            <a href="mailto:kemelbelfquih@gmail.com" class="contact-link">
+                <i class="fas fa-envelope"></i> kemelbelfquih@gmail.com
+            </a>
+            <a href="tel:0627440241" class="contact-link">
+                <i class="fas fa-phone"></i> 06 27 44 02 41
+            </a>
         </div>
-    </section>
-
-    <section class="py-16 bg-slate-800/30 border-y border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h3 class="text-xl font-mono text-cyber mb-8"> Certifications & CTF</h3>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="flex items-center px-4 py-2 bg-slate-800 border border-cyber/30 rounded text-slate-300">
-                    <i class="fas fa-certificate text-yellow-500 mr-2"></i> ANSSI SecNumAcadémie
-                </span>
-                <span class="flex items-center px-4 py-2 bg-slate-800 border border-cyber/30 rounded text-slate-300">
-                    <i class="fas fa-flag text-green-500 mr-2"></i> HackTheBox: Hacker Rank
-                </span>
-                <span class="flex items-center px-4 py-2 bg-slate-800 border border-cyber/30 rounded text-slate-300">
-                    <i class="fas fa-shield-alt text-blue-500 mr-2"></i> RGPD & Protection Données
-                </span>
-                <span class="flex items-center px-4 py-2 bg-slate-800 border border-slate-600 rounded text-slate-500">
-                    <i class="fas fa-spinner fa-spin mr-2"></i> Cisco CCNA (In Progress)
-                </span>
-            </div>
+        <div class="social-row reveal">
+            <a href="https://www.linkedin.com/in/kemel-belfquih-456391283" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Keeemel" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer id="contact" class="bg-slate-900 py-20 border-t border-slate-800">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <p class="text-cyber font-mono mb-4">Et maintenant ?</p>
-            <h2 class="text-4xl font-bold text-white mb-6">Travaillons ensemble</h2>
-            <p class="text-slate-400 mb-8 max-w-xl mx-auto">
-                Je suis activement à la recherche d'une alternance en DevSecOps pour septembre 2025.
-                Basé à Poueyferré, mobile sur Toulouse.
-            </p>
-            
-            <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
-                <a href="mailto:kemelbelfquih@gmail.com" class="flex items-center justify-center gap-3 px-6 py-4 bg-slate-800 hover:bg-slate-700 rounded text-white transition-all border border-slate-700">
-                    <i class="fas fa-envelope text-cyber"></i> kemelbelfquih@gmail.com
-                </a>
-                <a href="tel:0627440251" class="flex items-center justify-center gap-3 px-6 py-4 bg-slate-800 hover:bg-slate-700 rounded text-white transition-all border border-slate-700">
-                    <i class="fas fa-phone text-cyber"></i> 06.27.44.02.51
-                </a>
-            </div>
+<footer>
+    Conçu & développé par Kemel Belfquih &nbsp;·&nbsp; 2025
+</footer>
 
-            <div class="flex justify-center space-x-8 text-2xl text-slate-400">
-                <a href="https://www.linkedin.com/in/kemel-belfquih-456391283" class="hover:text-cyber hover:-translate-y-1 transition-all"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Keeemel" class="hover:text-cyber hover:-translate-y-1 transition-all"><i class="fab fa-github"></i></a>
-            </div>
-            
-            <p class="mt-12 text-slate-600 text-sm font-mono">
-                Conçu & Développé par Kemel Belfquih
-            </p>
-        </div>
-    </footer>
+<script>
+    // Typewriter
+    const phrases = ['Étudiant en Cybersécurité', 'En recherche d\'alternance', 'Curieux & Motivé'];
+    let pi = 0, ci = 0, deleting = false;
+    const el = document.getElementById('tw');
+    function type() {
+        const full = phrases[pi];
+        el.textContent = deleting ? full.slice(0, --ci) : full.slice(0, ++ci);
+        if (!deleting && ci === full.length) { setTimeout(() => deleting = true, 2000); setTimeout(type, 80); }
+        else if (deleting && ci === 0)       { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(type, 400); }
+        else                                  { setTimeout(type, deleting ? 40 : 90); }
+    }
+    type();
 
-    <script>
-        const texts = ["Technicien DevSecOps", "Passionné d'Automatisation", "Scripteur Python", "Adepte CTF"];
-        let count = 0;
-        let index = 0;
-        let currentText = "";
-        let letter = "";
-
-        (function type() {
-            if (count === texts.length) {
-                count = 0;
+    // Reveal on scroll
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('visible'), i * 60);
+                obs.unobserve(e.target);
             }
-            currentText = texts[count];
-            letter = currentText.slice(0, ++index);
-
-            document.getElementById("typewriter").textContent = letter;
-
-            if (letter.length === currentText.length) {
-                count++;
-                index = 0;
-                setTimeout(type, 2000); // Wait before erasing or next word
-            } else {
-                setTimeout(type, 100);
-            }
-        })();
-    </script>
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
-
 </html>
-
-
